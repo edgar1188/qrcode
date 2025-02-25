@@ -16,10 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from qrcode.views import index,qrcode as qcode
+from qrcode.views import index,qrcode as qcode, download as dlq
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',index,name='home'),
     path('qrcode/<ssid>/<password>',qcode,name='qrcode'),
+    path('download/<ssid>/<password>',dlq,name='download'),
 ]

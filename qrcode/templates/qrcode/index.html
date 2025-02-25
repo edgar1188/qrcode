@@ -7,7 +7,12 @@
     <label for="password">Clave</label>
     <input type="text" name="password" id="password">
     <div>
-        <img src="" alt="" id="qrcode">
+        <div>
+            <img src="" alt="" id="qrcode">
+        </div>
+        <div>
+            <a href="#" id="download">Descarga</a>
+        </div>
     </div>
 </form>
 {% endblock %}
@@ -18,6 +23,7 @@
     objeto.forEach(function(elemento){
         elemento.addEventListener('keyup',function(e){
             let imagen = document.getElementById('qrcode');
+            let download = document.getElementById('download');
             let ssid = document.getElementById('ssid');
             let password = document.getElementById('password');
             let ssid_url;
@@ -33,8 +39,13 @@
             }else{
                 password_url = 'cambiar';
             }
+
             let url = 'http://localhost:8000/qrcode/' + ssid_url + '/' + password_url;
+            let url_download = 'http://localhost:8000/download/' + ssid_url + '/' + password_url;
+
             imagen.src = url;
+            download.href = url_download;
+
         });
     });
 </script>

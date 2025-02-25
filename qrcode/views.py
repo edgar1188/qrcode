@@ -14,3 +14,9 @@ def qrcode(request,ssid,password):
     buffer = BytesIO()
     qr.png(buffer,scale=15)
     return  HttpResponse(buffer.getvalue(),content_type='image/png')
+
+def download(request,ssid,password):
+    qr = pyqrcode.create(f'WIFI:S:{ssid};T:WPA;P:{password};;')
+    buffer = BytesIO()
+    qr.png(buffer,scale=15)
+    return  HttpResponse(buffer.getvalue(),headers={'Content-Type':'application/octet-stream','Content-Disposition':'attachment; filename="download.png"'})
