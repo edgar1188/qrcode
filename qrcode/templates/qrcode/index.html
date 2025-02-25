@@ -16,7 +16,7 @@
 <script type="text/javascript">
     let objeto = document.querySelectorAll('#ssid,#password');
     objeto.forEach(function(elemento){
-        elemento.addEventListener('keypress',function(e){
+        elemento.addEventListener('keyup',function(e){
             let imagen = document.getElementById('qrcode');
             let ssid = document.getElementById('ssid');
             let password = document.getElementById('password');
