@@ -19,6 +19,7 @@
 
 {% block javascript %}
 <script type="text/javascript">
+    let route = '{{ request.build_absolute_uri }}';
     let objeto = document.querySelectorAll('#ssid,#password');
     objeto.forEach(function(elemento){
         elemento.addEventListener('keyup',function(e){
@@ -40,8 +41,9 @@
                 password_url = 'cambiar';
             }
 
-            let url = 'http://localhost:8000/qrcode/' + ssid_url + '/' + password_url;
-            let url_download = 'http://localhost:8000/download/' + ssid_url + '/' + password_url;
+
+            let url = route + 'qrcode/' + ssid_url + '/' + password_url;
+            let url_download = route + '/download/' + ssid_url + '/' + password_url;
 
             imagen.src = url;
             download.href = url_download;
